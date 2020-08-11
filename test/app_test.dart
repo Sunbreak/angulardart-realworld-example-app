@@ -1,7 +1,7 @@
-import 'package:angular_test/angular_test.dart';
 @TestOn('browser')
-import 'package:realworld/app_component.dart';
-import 'package:realworld/app_component.template.dart' as ng;
+import 'package:angdart_conduit/app_component.dart';
+import 'package:angdart_conduit/app_component.template.dart' as ng;
+import 'package:angular_test/angular_test.dart';
 import 'package:test/test.dart';
 
 void main() {
@@ -17,11 +17,6 @@ void main() {
 
   test('Default greeting', () {
     expect(fixture.text, 'Hello Angular');
-  });
-
-  test('Greet world', () async {
-    await fixture.update((c) => c.name = 'World');
-    expect(fixture.text, 'Hello World');
   });
 
   test('Greet world HTML', () {

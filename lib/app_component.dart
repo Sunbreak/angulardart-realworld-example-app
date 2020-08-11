@@ -1,9 +1,13 @@
 import 'package:angular/angular.dart';
+import 'package:angular_router/angular_router.dart';
+
+import 'routes.dart';
+import 'shared/shared.dart';
 
 @Component(
-  selector: 'my-app',
-  template: '<h1>Hello {{name}}</h1>',
+  selector: 'app-root',
+  templateUrl: 'app_component.html',
+  directives: [routerDirectives, FooterComponent, HeaderComponent],
+  exports: [Routes],
 )
-class AppComponent {
-  var name = 'Angular';
-}
+class AppComponent {}
