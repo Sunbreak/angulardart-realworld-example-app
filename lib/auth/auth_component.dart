@@ -1,21 +1,30 @@
-import 'dart:convert';
-
 import 'package:angular/angular.dart';
 import 'package:angular_forms/angular_forms.dart';
 import 'package:angular_router/angular_router.dart';
 
+import '../shared/shared.dart';
+
 @Component(
   selector: 'auth-page',
   templateUrl: 'auth_component.html',
-  directives: [coreDirectives, routerDirectives, formDirectives],
+  directives: [
+    coreDirectives,
+    routerDirectives,
+    formDirectives,
+    ListErrorsComponent
+  ],
 )
 class AuthComponent implements OnActivate {
   String authType = '';
   String title = '';
+  Errors errors = Errors();
   bool isSubmitting = false;
   ControlGroup authForm;
 
-  AuthComponent() {
+  Router _router;
+  UserService _userService;
+
+  AuthComponent(this._router, this._userService) {
     authForm = FormBuilder.controlGroup({
       'email': Control<String>('', Validators.required),
       'password': Control<String>('', Validators.required),
@@ -33,6 +42,14 @@ class AuthComponent implements OnActivate {
 
   submitForm() {
     isSubmitting = true;
-    print(jsonEncode(authForm.value));
+    errors = Errors();
+
+    var credentials = authForm.value;
+    _userService.attemptAuth(authType, credentials).listen((event) {
+      _router.navigateByUrl('/');
+    }).onError((error) {
+      errors = Errors.fromJson(error);
+      isSubmitting = false;
+    });
   }
 }

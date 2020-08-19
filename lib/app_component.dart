@@ -8,6 +8,7 @@ import 'shared/shared.dart';
   selector: 'app-root',
   templateUrl: 'app_component.html',
   directives: [routerDirectives, FooterComponent, HeaderComponent],
+  providers: [ClassProvider(ApiService), ClassProvider(UserService)],
   exports: [Routes],
 )
 class AppComponent {}
