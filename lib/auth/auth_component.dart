@@ -3,6 +3,7 @@ import 'package:angular_forms/angular_forms.dart';
 import 'package:angular_router/angular_router.dart';
 
 import '../shared/shared.dart';
+import 'no_auth_guard_service.dart';
 
 @Component(
   selector: 'auth-page',
@@ -14,7 +15,7 @@ import '../shared/shared.dart';
     ListErrorsComponent
   ],
 )
-class AuthComponent implements OnActivate {
+class AuthComponent with NoAuthGuard implements OnActivate {
   String authType = '';
   String title = '';
   Errors errors = Errors();
@@ -23,6 +24,9 @@ class AuthComponent implements OnActivate {
 
   Router _router;
   UserService _userService;
+
+  @override
+  UserService get userService => _userService;
 
   AuthComponent(this._router, this._userService) {
     authForm = FormBuilder.controlGroup({
