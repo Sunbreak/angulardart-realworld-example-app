@@ -8,7 +8,20 @@ import 'shared/shared.dart';
   selector: 'app-root',
   templateUrl: 'app_component.html',
   directives: [routerDirectives, FooterComponent, HeaderComponent],
-  providers: [ClassProvider(ApiService), ClassProvider(UserService)],
+  providers: [
+    ClassProvider(ApiService),
+    ClassProvider(JwtService),
+    ClassProvider(UserService),
+  ],
   exports: [Routes],
 )
-class AppComponent {}
+class AppComponent implements OnInit {
+  UserService _userService;
+
+  AppComponent(this._userService);
+
+  @override
+  void ngOnInit() {
+    _userService.populate();
+  }
+}

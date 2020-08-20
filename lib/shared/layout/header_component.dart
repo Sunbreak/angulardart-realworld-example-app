@@ -6,6 +6,19 @@ import '../shared.dart';
 @Component(
   selector: 'layout-header',
   templateUrl: 'header_component.html',
-  directives: [routerDirectives, ShowAuthedDirective],
+  directives: [coreDirectives, routerDirectives, ShowAuthedDirective],
 )
-class HeaderComponent {}
+class HeaderComponent implements OnInit {
+  UserService _userService;
+
+  HeaderComponent(this._userService);
+
+  User currentUser;
+
+  @override
+  void ngOnInit() {
+    _userService.currentUser.listen((userData) {
+      currentUser = userData;
+    });
+  }
+}
