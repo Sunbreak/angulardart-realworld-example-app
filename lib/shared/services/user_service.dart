@@ -63,4 +63,18 @@ class UserService {
       return user;
     });
   }
+
+  User getCurrentUser() {
+    return _currentUserSubject.value;
+  }
+
+  Stream<User> update(User user) {
+    return _apiService.put('/user', {
+      'user': user.toJson(),
+    }).map((data) {
+      var user = User.fromJson((data as Map)['user']);
+      _currentUserSubject.add(user);
+      return user;
+    });
+  }
 }

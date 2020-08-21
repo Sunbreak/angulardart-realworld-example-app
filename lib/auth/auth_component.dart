@@ -44,7 +44,7 @@ class AuthComponent with NoAuthGuard implements OnActivate {
     }
   }
 
-  submitForm() {
+  void submitForm() {
     isSubmitting = true;
     errors = Errors();
 
