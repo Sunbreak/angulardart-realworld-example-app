@@ -2,6 +2,7 @@ import 'package:angular_router/angular_router.dart';
 
 import 'auth/auth_component.template.dart' as auth_template;
 import 'home/home_component.template.dart' as home_template;
+import 'profile/profile_component.template.dart' as profile_template;
 import 'settings/settings_component.template.dart' as settings_template;
 
 class Routes {
@@ -10,6 +11,7 @@ class Routes {
     register,
     home,
     settings,
+    profile,
   ];
 
   static final login = RouteDefinition(
@@ -30,5 +32,10 @@ class Routes {
   static final settings = RouteDefinition(
     routePath: RoutePath(path: 'settings'),
     component: settings_template.SettingsComponentNgFactory,
+  );
+
+  static final profile = RouteDefinition(
+    routePath: RoutePath(path: 'profile/:username'),
+    component: profile_template.ProfileComponentNgFactory,
   );
 }
