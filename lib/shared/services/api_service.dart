@@ -71,4 +71,15 @@ class ApiService {
     });
     return Stream.fromFuture(future);
   }
+
+  Stream<dynamic> delete(String path) {
+    var future = http
+        .delete(
+          '$_api_url$path',
+          headers: setHeaders(),
+        )
+        .catchError(_formatErrors)
+        .then((response) => jsonDecode(response.body));
+    return Stream.fromFuture(future);
+  }
 }

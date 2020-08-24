@@ -7,7 +7,7 @@ import '../shared/shared.dart';
 @Component(
   selector: 'profile-page',
   templateUrl: 'profile_component.html',
-  directives: [coreDirectives, routerDirectives],
+  directives: [coreDirectives, routerDirectives, FollowButtonComponent],
 )
 class ProfileComponent implements OnInit, OnActivate {
   UserService _userService;
@@ -38,5 +38,9 @@ class ProfileComponent implements OnInit, OnActivate {
     } catch (e) {
       _router.navigateByUrl('/');
     }
+  }
+
+  void onToggleFollowing(bool following) {
+    profile.following = following;
   }
 }

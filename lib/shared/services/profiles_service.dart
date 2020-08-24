@@ -13,4 +13,18 @@ class ProfilesService {
       return Profile.fromJson(json);
     });
   }
+
+  Stream<Profile> follow(String username) {
+    return _apiService.post('/profiles/$username/follow').map((data) {
+      var json = (data as Map)['profile'];
+      return Profile.fromJson(json);
+    });
+  }
+
+  Stream<Profile> unfollow(String username) {
+    return _apiService.delete('/profiles/$username/follow').map((data) {
+      var json = (data as Map)['profile'];
+      return Profile.fromJson(json);
+    });
+  }
 }
