@@ -1,5 +1,6 @@
 import 'package:angular_router/angular_router.dart';
 
+import 'article/article_component.template.dart' as article_template;
 import 'auth/auth_component.template.dart' as auth_template;
 import 'editor/editor_component.template.dart' as editor_template;
 import 'home/home_component.template.dart' as home_template;
@@ -15,6 +16,7 @@ class Routes {
     profile,
     editorNew,
     editorEdit,
+    article,
   ];
 
   static final login = RouteDefinition(
@@ -50,5 +52,10 @@ class Routes {
   static final editorEdit = RouteDefinition(
     routePath: RoutePath(path: 'editor/:slug'),
     component: editor_template.EditorComponentNgFactory,
+  );
+
+  static final article = RouteDefinition(
+    routePath: RoutePath(path: 'article/:slug'),
+    component: article_template.ArticleComponentNgFactory,
   );
 }

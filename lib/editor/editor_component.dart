@@ -87,7 +87,7 @@ class EditorComponent with AuthGuard implements OnActivate {
 
     try {
       var article = await _articlesService.save(this.article).first;
-      _router.navigateByUrl('/editor/${article.slug}');
+      _router.navigateByUrl('/article/${article.slug}');
     } catch (error) {
       errors = Errors.fromJson(error as Map);
     } finally {

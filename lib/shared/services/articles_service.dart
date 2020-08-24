@@ -31,4 +31,16 @@ class ArticlesService {
       });
     }
   }
+
+  Stream<void> destroy(String slug) {
+    return _apiService.delete('/articles/$slug');
+  }
+
+  Stream<Article> favorite(String slug) {
+    return _apiService.post('/articles/$slug/favorite');
+  }
+
+  Stream<Article> unfavorite(String slug) {
+    return _apiService.delete('/articles/$slug/favorite');
+  }
 }

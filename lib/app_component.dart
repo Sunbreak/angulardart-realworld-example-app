@@ -14,6 +14,7 @@ import 'shared/shared.dart';
     ClassProvider(UserService),
     ClassProvider(ProfilesService),
     ClassProvider(ArticlesService),
+    ClassProvider(CommentsService),
   ],
   exports: [Routes],
 )
