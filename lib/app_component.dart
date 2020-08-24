@@ -13,6 +13,7 @@ import 'shared/shared.dart';
     ClassProvider(JwtService),
     ClassProvider(UserService),
     ClassProvider(ProfilesService),
+    ClassProvider(ArticlesService),
   ],
   exports: [Routes],
 )
