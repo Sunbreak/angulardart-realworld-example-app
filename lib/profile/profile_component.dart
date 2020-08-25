@@ -3,11 +3,18 @@ import 'package:angular/angular.dart';
 import 'package:angular_router/angular_router.dart';
 
 import '../shared/shared.dart';
+import 'profile_routes.dart';
 
 @Component(
   selector: 'profile-page',
   templateUrl: 'profile_component.html',
-  directives: [coreDirectives, routerDirectives, FollowButtonComponent],
+  directives: [
+    coreDirectives,
+    routerDirectives,
+    FollowButtonComponent,
+    RouterOutlet
+  ],
+  exports: [ProfileRoutes],
 )
 class ProfileComponent implements OnInit, OnActivate {
   UserService _userService;

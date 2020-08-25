@@ -43,4 +43,9 @@ class ArticlesService {
   Stream<Article> unfavorite(String slug) {
     return _apiService.delete('/articles/$slug/favorite');
   }
+
+  Stream<dynamic> query(ArticleListConfig config) {
+    var segment = config.type == 'feed' ? '/feed' : '';
+    return _apiService.get('/articles${segment}', config.filters.toJson());
+  }
 }

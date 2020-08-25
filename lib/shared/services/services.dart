@@ -4,4 +4,5 @@ export 'auth_guard_service.dart';
 export 'comments_service.dart';
 export 'jwt_service.dart';
 export 'profiles_service.dart';
+export 'tags_service.dart';
 export 'user_service.dart';

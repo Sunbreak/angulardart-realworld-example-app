@@ -43,10 +43,13 @@ class ApiService {
     return Stream.fromFuture(future);
   }
 
-  Stream<dynamic> get(String path) {
+  Stream<dynamic> get(String path, [Map<String, dynamic> queryParams]) {
+    var parse = Uri.parse('$_api_url$path');
+    var queryParameters =
+        queryParams?.map((key, value) => MapEntry(key, value.toString()));
     var future = http
         .get(
-          '$_api_url$path',
+          Uri.https(parse.authority, parse.path, queryParameters),
           headers: setHeaders(),
         )
         .catchError(_formatErrors)

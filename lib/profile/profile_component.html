@@ -31,18 +31,25 @@
         <div class="articles-toggle">
           <ul class="nav nav-pills outline-active">
             <li class="nav-item">
-              <a class="nav-link">
+              <a *ngIf="profile != null"
+                 class="nav-link"
+                 [routerLinkActive]="'active'"
+                 [routerLink]="'/profile/' + profile.username">
                 My Posts
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link">
+              <a *ngIf="profile != null"
+                 class="nav-link"
+                 [routerLinkActive]="'active'"
+                 [routerLink]="'/profile/' + profile.username + '/favorites'">
                 Favorited Posts
               </a>
             </li>
           </ul>
         </div>
 
+        <router-outlet [routes]="ProfileRoutes.all"></router-outlet>
       </div>
 
     </div>
